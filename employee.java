@@ -1,61 +1,46 @@
 import java.util.Scanner;
-public class employee{
-  private int eno;
-  private String ename;
-  private double esalary;
-
-  public employee(int no,String name,double salary){
-    eno=no;
-    ename=name;
-    esalary=salary;
-  }
-  public String toString(){
-    return "employee[eno="+eno +",ename="+ename +",esalary="+esalary +"]";
-   }
-  
-  public static void main(String args[]){
-    int n,choice,searchEno;
-    Scanner input=new Scanner(System.in);
-    System.out.print("Enter the number of employees");  
-    n=input.nextInt();
-    employee[] employees=new employee[n];
-    for(int i=0;i<n;i++){
-       System.out.print("\nEnter employee number");
-       int no = input.nextInt();
-       input.nextLine();
-       System.out.print("Enter employee name: ");
-       String name = input.nextLine();
-       System.out.print("Enter employee salary: ");
-       double salary = input.nextDouble();
-
-       employees[i] = new employee(no, name, salary);
-      }
-    while(true){
-      System.out.print("\nChoose option:\n1.Search by employee number\n2.exit\n");
-      choice=input.nextInt();
-      
-    if (choice == 1) {
-      System.out.print("\nEnter employee number to search: ");
-      searchEno = input.nextInt();
-      boolean found = false;
-      for (employee emp : employees) {
-          if (emp.eno == searchEno) {
-            System.out.println(emp);
-            found = true;
-              break;
-           }
-        }
-      if (!found) {
-       System.out.println("Employee not found with eno: " + searchEno);
-      }
-    } else if (choice == 2) {
-         break;
-       } else {
-         System.out.println("Invalid option. Try again.");
-       }
-    }
-  System.out.println("Exiting menu ...");
- }
+public class employee {
+int eNo;
+String eName;
+double eSalary;
+public void getdetails(){
+System.out.println("\nEnter the Employee details");
+Scanner sc = new Scanner(System.in);
+System.out.println("Employee number : ");
+eNo=sc.nextInt();
+System.out.println("Name : ");
+sc.nextLine();
+eName=sc.nextLine();
+System.out.println("Salary : ");
+eSalary=sc.nextDouble();
 }
+void display(){
+System.out.println("Empolyee No :"+eNo);
+System.out.println("Name :"+eName);
+System.out.println("Salary Amount"+eSalary+"\n");
+}
+public static void main(String[] args) {
+System.out.println("\nEnter the No. of Employee's");
+Scanner sc1 = new Scanner(System.in);
+int num = sc1.nextInt();
+employee arr[]=new employee[num];
+for(int i =0;i<num;i++){
+arr[i]=new employee();
+arr[i].getdetails();
 
-      
+}
+System.out.println("\nInformations of all the employee's");
+for(int i=0;i<num;i++){
+arr[i].display();
+}
+boolean state = false;
+System.out.println("\nEnter the Employee Number to get details of a employee");
+int num2= sc1.nextInt();
+for(int i=0;i<num;i++){
+if(arr[i].eNo==num2){
+System.out.println("\nEmployee details");
+arr[i].display();
+}
+}
+}
+}
